@@ -22,9 +22,9 @@ html, body {
     display: flex;
     flex-direction: column;
     height: fit-content;
-    margin-top: 7.5%;
-    margin-bottom: 7.5%;
-    border: 1px solid green;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    /* border: 1px solid green; */
     gap: .5em;
 }
 
