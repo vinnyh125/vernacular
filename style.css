@@ -42,5 +42,9 @@ html, body {
 }
 
 .keyboard {
-    
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    gap: .5em;
 }
+
