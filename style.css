@@ -55,8 +55,24 @@ html, body {
     gap: .5em;
 }
 
-.keyboard-row div {
+.keyboard-row button {
+    border-radius: 5px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.25em;
+    color: inherit;
+    background-color: gray;
+    font: inherit;
+    font-weight: bold;
     height: 58px;
     width: 43px;
     border: 1px solid gray;
 }
+
+#k-enter, #k-backspace {
+    width: 66px;
+    font-size: 12px;
+}
+
