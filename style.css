@@ -22,8 +22,8 @@ html, body {
     display: flex;
     flex-direction: column;
     height: fit-content;
-    margin-top: 5%;
-    margin-bottom: 5%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
     /* border: 1px solid green; */
     gap: .5em;
 }
@@ -41,10 +41,22 @@ html, body {
     border: 1px solid gray;
 }
 
-.keyboard {
+#keyboard {
     display: flex;
     flex-direction: column;
     height: fit-content;
     gap: .5em;
 }
 
+.keyboard-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5em;
+}
+
+.keyboard-row div {
+    height: 58px;
+    width: 43px;
+    border: 1px solid gray;
+}
