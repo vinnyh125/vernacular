@@ -39,6 +39,9 @@ html, body {
     height: 62px;
     width: 62px;
     border: 1px solid gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #keyboard {
@@ -69,6 +72,10 @@ html, body {
     height: 58px;
     width: 43px;
     border: 1px solid gray;
+}
+
+.keyboard-row button:focus {
+    outline: none;
 }
 
 #k-enter, #k-backspace {
