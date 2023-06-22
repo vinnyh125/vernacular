@@ -10,27 +10,38 @@ $(document).ready(function() {
 
     let chars = [];
 
-    var i = 0;
+    var tileNum = 0;
+    var rowNum = 0;
     buttons.forEach(key => {
         key.addEventListener('click', () => { //need to prevent user from being able to type onto next row unless enter is pressed
-            divElements[i].textContent = key.innerText
-            chars.push(key.innerText)
-            i++
+            if (tileNum < 5 && rowNum < 6) {
+                divElements[tileNum + (rowNum * 5)].textContent = key.innerText;
+                console.log(tileNum);
+                chars.push(key.innerText);
+                tileNum++;
+            }
         })
     })
 
     delete_btn.addEventListener('click', () => {
-        if (i!=0) {
-            chars.pop()
-            i--
-            divElements[i].textContent = ''
+        if (tileNum!=0) {
+            chars.pop();
+            tileNum--;
+            divElements[tileNum + (rowNum * 5)].textContent = '';
+            console.log(tileNum);
         }
     })
 
     enter_btn.addEventListener('click', () => { //need to add check to make sure that the answer is a word and is of length 5
-        let answer = chars.join('')
-        if (answer == "HELLO") { //need to remember that the value of each key is CAPITALIZED
-            console.log("this is run if enter button works")
+        if (tileNum == 5 && rowNum < 6) {
+            let answer = chars.join('');
+            if (answer == "HELLO") { //need to remember that the value of each key is CAPITALIZED
+                console.log("this is run if enter button works");
+            }
+            tileNum = 0;
+            rowNum ++;
+            console.log("incremented rowNum to " + rowNum);
+            chars = [];
         }
     })
 });
