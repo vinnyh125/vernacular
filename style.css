@@ -11,7 +11,7 @@ html, body {
     display: flex;
     width: 100%;
     justify-content: center;
-    border-bottom: 1px rgb(117, 117, 117) solid;
+    border-bottom: 1px #3a3a3c solid;
 }
 
 #title-name {
@@ -38,7 +38,7 @@ html, body {
 .text-row div {
     height: 62px;
     width: 62px;
-    border: 1px solid gray;
+    border: 1px solid #3a3a3c;
     display: flex;
     justify-content: center;
     align-items: center;
