@@ -9,7 +9,7 @@ $(document).ready(function() {
     var tileNum = 0;
     var rowNum = 0;
     buttons.forEach(key => {
-        key.addEventListener('click', () => { //need to prevent user from being able to type onto next row unless enter is pressed
+        key.addEventListener('click', () => {
             if (tileNum < 5 && rowNum < 6) {
                 divElements[tileNum + (rowNum * 5)].textContent = key.innerText;
                 console.log(tileNum);
@@ -28,7 +28,7 @@ $(document).ready(function() {
         }
     });
 
-    enter_btn.addEventListener('click', () => { //need to add check to make sure that the answer is a word and is of length 5
+    enter_btn.addEventListener('click', () => { 
         if (tileNum == 5 && rowNum < 6) {
             let answer = chars.join('');
             if (answer == "HELLO") { //need to remember that the value of each key is CAPITALIZED
@@ -43,10 +43,10 @@ $(document).ready(function() {
 
     document.addEventListener('keydown', (event) => {
         const { key } = event;
-        const isAlphabeticalKey = /^[a-zA-Z]$/.test(key);
+        const isAlphabeticalKey = /^[a-zA-Z]$/.test(key); // regex: keyboard inputs from a-z & A-Z are supported
 
         if (isAlphabeticalKey) {
-            const uppercaseKey = key.toUpperCase();
+            const uppercaseKey = key.toUpperCase(); // capitalizes inputs because everything we work with is in uppercase
             insertCharacter(uppercaseKey);
         } else if (key === 'Backspace') {
             deleteCharacter();
