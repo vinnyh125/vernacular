@@ -1,12 +1,8 @@
 $(document).ready(function() {
     const buttons = document.querySelectorAll(".key");
-    console.log(buttons);
     const divElements = document.querySelectorAll(".tile");
-    console.log(divElements);
     const delete_btn = document.querySelector(".delete");
-    console.log(delete_btn);
     const enter_btn = document.querySelector(".enter");
-    console.log(enter_btn);
 
     let chars = [];
 
@@ -20,8 +16,8 @@ $(document).ready(function() {
                 chars.push(key.innerText);
                 tileNum++;
             }
-        })
-    })
+        });
+    });
 
     delete_btn.addEventListener('click', () => {
         if (tileNum!=0) {
@@ -30,7 +26,7 @@ $(document).ready(function() {
             divElements[tileNum + (rowNum * 5)].textContent = '';
             console.log(tileNum);
         }
-    })
+    });
 
     enter_btn.addEventListener('click', () => { //need to add check to make sure that the answer is a word and is of length 5
         if (tileNum == 5 && rowNum < 6) {
@@ -43,5 +39,50 @@ $(document).ready(function() {
             console.log("incremented rowNum to " + rowNum);
             chars = [];
         }
-    })
+    });
+
+    document.addEventListener('keydown', (event) => {
+        const { key } = event;
+        const isAlphabeticalKey = /^[a-zA-Z]$/.test(key);
+
+        if (isAlphabeticalKey) {
+            const uppercaseKey = key.toUpperCase();
+            insertCharacter(uppercaseKey);
+        } else if (key === 'Backspace') {
+            deleteCharacter();
+        } else if (key === 'Enter') {
+            processEnter();
+        }
+    });
+
+    function insertCharacter(character) {
+        if (tileNum < 5 && rowNum < 6) {
+            divElements[tileNum + (rowNum * 5)].textContent = character;
+            console.log(tileNum);
+            chars.push(character);
+            tileNum++;
+        }
+    }
+
+    function deleteCharacter() {
+        if (tileNum !== 0) {
+            chars.pop();
+            tileNum--;
+            divElements[tileNum + (rowNum * 5)].textContent = '';
+            console.log(tileNum);
+        }
+    }
+
+    function processEnter() {
+        if (tileNum === 5 && rowNum < 6) {
+            let answer = chars.join('');
+            if (answer === 'HELLO') {
+                console.log('This is run if enter button works');
+            }
+            tileNum = 0;
+            rowNum++;
+            console.log('Incremented rowNum to ' + rowNum);
+            chars = [];
+        }
+    }
 });
