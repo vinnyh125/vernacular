@@ -6,6 +6,7 @@ html, body {
     background-color: #000;
     letter-spacing: 1.5px;
     overflow: hidden;
+    touch-action: manipulation;
 }
 
 #navbar {
@@ -72,7 +73,6 @@ html, body {
     font-weight: bold;
     height: 58px;
     width: 43px;
-    min-width: fit-content;
     border: 1px solid gray;
 }
 
@@ -89,5 +89,8 @@ html, body {
     .text-row div {
         height: 52px;
         width: 52px;
+    }
+    .keyboard-row button {
+        width: 29.5px;
     }
 }
