@@ -71,6 +71,7 @@ html, body {
     font-weight: bold;
     height: 58px;
     width: 43px;
+    min-width: 30.5px;
     border: 1px solid gray;
 }
 
@@ -80,7 +81,7 @@ html, body {
 
 #k-enter, #k-backspace {
     width: 66px;
-    font-size: 12px;
+    font-size: .75em;
 }
 
 @media (max-width: 512px) {
