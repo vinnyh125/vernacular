@@ -91,6 +91,9 @@ html, body {
         width: 52px;
     }
     .keyboard-row button {
-        flex: 1;
+        width: 27px;
+    }
+    #k-enter, #k-backspace {
+        width: 60px;
     }
 }
