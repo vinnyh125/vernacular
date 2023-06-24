@@ -5,6 +5,17 @@ $(document).ready(function() {
     const enter_btn = document.querySelector(".enter");
 
     let chars = [];
+    var targetWord = '';
+
+    const api_url = "https://random-word-api.herokuapp.com/word?length=5"; // 5-letter word api
+
+    async function getapi(url) {
+        const response = await fetch(url); // Store response of api call
+        var data = await response.json(); // store data in json form (array in this case)
+        targetWord = data[0]; // setting targetWord to be word from api call
+        console.log(targetWord); // debug msg to make sure targetWord grabbed smt
+    }
+    getapi(api_url); // actually calling the api using the api link
 
     var tileNum = 0;
     var rowNum = 0;
@@ -31,8 +42,8 @@ $(document).ready(function() {
     enter_btn.addEventListener('click', () => { 
         if (tileNum == 5 && rowNum < 6) {
             let answer = chars.join('');
-            if (answer == "HELLO") { //need to remember that the value of each key is CAPITALIZED
-                console.log("this is run if enter button works");
+            if (answer == targetWord.toUpperCase()) { //need to remember that the value of each key is CAPITALIZED
+                console.log("this is run if user enters correct word");
             }
             tileNum = 0;
             rowNum ++;
@@ -76,8 +87,8 @@ $(document).ready(function() {
     function processEnter() {
         if (tileNum === 5 && rowNum < 6) {
             let answer = chars.join('');
-            if (answer === 'HELLO') {
-                console.log('This is run if enter button works');
+            if (answer === targetWord.toUpperCase()) {
+                console.log('This is run if user entered correct word');
             }
             tileNum = 0;
             rowNum++;
