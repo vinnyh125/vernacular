@@ -83,3 +83,9 @@ html, body {
     font-size: 12px;
 }
 
+@media (max-width: 512px) {
+    .text-row div {
+        height: 52px;
+        width: 52px;
+    }
+}
