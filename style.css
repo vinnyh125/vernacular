@@ -91,6 +91,6 @@ html, body {
         width: 52px;
     }
     .keyboard-row button {
-        width: 29.5px;
+        flex: 1;
     }
 }
