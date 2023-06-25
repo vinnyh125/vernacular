@@ -7,7 +7,7 @@ $(document).ready(function() {
     let chars = [];
     var targetWord = '';
 
-    const api_url = "https://random-word-api.herokuapp.com/word?length=5"; // 5-letter word api
+    const api_url = "https://random-word-api.vercel.app/api?words=1&length=5"; // 5-letter word api
 
     async function getapi(url) {
         const response = await fetch(url); // Store response of api call
