@@ -41,10 +41,7 @@ $(document).ready(function() {
 
     enter_btn.addEventListener('click', () => { 
         if (tileNum == 5 && rowNum < 6) {
-            let answer = chars.join('');
-            if (answer == targetWord.toUpperCase()) { //need to remember that the value of each key is CAPITALIZED
-                console.log("this is run if user enters correct word");
-            }
+            checkWord();
             tileNum = 0;
             rowNum ++;
             console.log("incremented rowNum to " + rowNum);
@@ -71,6 +68,7 @@ $(document).ready(function() {
             divElements[tileNum + (rowNum * 5)].textContent = character;
             console.log(tileNum);
             chars.push(character);
+            console.log(chars);
             tileNum++;
         }
     }
@@ -86,14 +84,27 @@ $(document).ready(function() {
 
     function processEnter() {
         if (tileNum === 5 && rowNum < 6) {
-            let answer = chars.join('');
-            if (answer === targetWord.toUpperCase()) {
-                console.log('This is run if user entered correct word');
-            }
+            checkWord();
             tileNum = 0;
             rowNum++;
             console.log('Incremented rowNum to ' + rowNum);
             chars = [];
+        } else if (tileNum < 5 && rowNum < 6) {
+            alert("Not enough letters!")
+        }
+    }
+
+    function checkWord() {
+        for (let i = 0; i < tileNum; i++) {
+            if (targetWord.toUpperCase().includes(chars[i])) { // checks if user input letter is included in answer
+                if (targetWord.toUpperCase().charAt(i) == chars[i]) { // if letter is in answer, check location
+                    divElements[i + (rowNum * 5)].classList.add("tile-green"); // if location correct, tile green
+                } else {
+                    divElements[i + (rowNum * 5)].classList.add("tile-yellow"); // if location incorrect, tile yellow
+                }
+            } else { // if letter isn't in answer
+                divElements[i + (rowNum * 5)].classList.add("tile-gray"); // set tile gray if letter not in answer
+            }
         }
     }
 });
