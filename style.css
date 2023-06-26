@@ -46,6 +46,18 @@ html, body {
     align-items: center;
 }
 
+.tile-green {
+    background-color: green;
+}
+
+.tile-gray {
+    background-color: gray;
+}
+
+.tile-yellow {
+    background-color: yellow;
+}
+
 #keyboard {
     display: flex;
     flex-direction: column;
