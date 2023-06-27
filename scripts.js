@@ -6,6 +6,7 @@ $(document).ready(function() {
 
     let chars = [];
     var targetWord = '';
+    var answerDict = {};
 
     const api_url = "https://random-word-api.vercel.app/api?words=1&length=5"; // 5-letter word api
 
@@ -14,6 +15,14 @@ $(document).ready(function() {
         var data = await response.json(); // store data in json form (array in this case)
         targetWord = data[0]; // setting targetWord to be word from api call
         console.log(targetWord); // debug msg to make sure targetWord grabbed smt
+        for (let i = 0; i < targetWord.length; i++) {
+            if (!(targetWord.charAt(i) in answerDict)) { // if letter doesn't exist in the dictionary yet, add it with value of 1 
+                answerDict[targetWord.charAt(i)] = 1;
+            } else { // if letter does exist, increment the times it appears in the answer by 1
+                answerDict[targetWord.charAt(i)] += 1;
+            }
+        }
+        console.log(answerDict); // prints dictionary of each letter in targetWord/answer and how many times they show up (this will serve as our counter)
     }
     getapi(api_url); // actually calling the api using the api link
 
