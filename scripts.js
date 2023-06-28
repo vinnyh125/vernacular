@@ -22,7 +22,7 @@ $(document).ready(function() {
                 answerDict[targetWord.charAt(i)] += 1;
             }
         }
-        console.log(answerDict); // prints dictionary of each letter in targetWord/answer and how many times they show up (this will serve as our counter)
+        //console.log(answerDict); // prints dictionary of each letter in targetWord/answer and how many times they show up (this will serve as our counter)
     }
     getapi(api_url); // actually calling the api using the api link
 
@@ -32,7 +32,6 @@ $(document).ready(function() {
         key.addEventListener('click', () => {
             if (tileNum < 5 && rowNum < 6) {
                 divElements[tileNum + (rowNum * 5)].textContent = key.innerText;
-                console.log(tileNum);
                 chars.push(key.innerText);
                 tileNum++;
             }
@@ -44,7 +43,6 @@ $(document).ready(function() {
             chars.pop();
             tileNum--;
             divElements[tileNum + (rowNum * 5)].textContent = '';
-            console.log(tileNum);
         }
     });
 
@@ -53,7 +51,6 @@ $(document).ready(function() {
             checkWord();
             tileNum = 0;
             rowNum ++;
-            console.log("incremented rowNum to " + rowNum);
             chars = [];
         }
     });
@@ -75,9 +72,7 @@ $(document).ready(function() {
     function insertCharacter(character) {
         if (tileNum < 5 && rowNum < 6) {
             divElements[tileNum + (rowNum * 5)].textContent = character;
-            console.log(tileNum);
             chars.push(character);
-            console.log(chars);
             tileNum++;
         }
     }
@@ -87,7 +82,6 @@ $(document).ready(function() {
             chars.pop();
             tileNum--;
             divElements[tileNum + (rowNum * 5)].textContent = '';
-            console.log(tileNum);
         }
     }
 
@@ -96,7 +90,6 @@ $(document).ready(function() {
             checkWord();
             tileNum = 0;
             rowNum++;
-            console.log('Incremented rowNum to ' + rowNum);
             chars = [];
         } else if (tileNum < 5 && rowNum < 6) {
             alert("Not enough letters!")
@@ -104,16 +97,19 @@ $(document).ready(function() {
     }
 
     function checkWord() {
+        var guessDict = {};
+
         for (let i = 0; i < tileNum; i++) {
             if (targetWord.toUpperCase().includes(chars[i])) { // checks if user input letter is included in answer
                 if (targetWord.toUpperCase().charAt(i) == chars[i]) { // if letter is in answer, check location
                     divElements[i + (rowNum * 5)].classList.add("tile-green"); // if location correct, tile green
                 } else {
-                    divElements[i + (rowNum * 5)].classList.add("tile-yellow"); // if location incorrect, tile yellow
+                    divElements[i + (rowNum * 5)].classList.add("tile-yellow");
                 }
             } else { // if letter isn't in answer
                 divElements[i + (rowNum * 5)].classList.add("tile-gray"); // set tile gray if letter not in answer
             }
         }
+        console.log(guessDict);
     }
 });
