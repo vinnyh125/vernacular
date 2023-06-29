@@ -98,15 +98,43 @@ $(document).ready(function() {
     function checkWord() {
         var guessDict = {};
 
+        for (let i = 0; i < targetWord.length; i++) {
+            if (!(targetWord.charAt(i) in guessDict)) { // if letter doesn't exist in the dictionary yet, add it with value of 1 
+                guessDict[targetWord.charAt(i)] = 1;
+            } else { // if letter does exist, increment the times it appears in the answer by 1
+                guessDict[targetWord.charAt(i)] += 1;
+            }
+        }
+        console.log(guessDict);
+
         for (let i = 0; i < tileNum; i++) {
+            console.log(chars[i].toLowerCase());
             if (targetWord.toUpperCase().includes(chars[i])) { // checks if user input letter is included in answer
                 if (targetWord.toUpperCase().charAt(i) == chars[i]) { // if letter is in answer, check location
                     divElements[i + (rowNum * 5)].classList.add("tile-green"); // if location correct, tile green
-                } else {
-                    divElements[i + (rowNum * 5)].classList.add("tile-yellow"); // if location incorrect, tile yellow
+                    guessDict[chars[i].toLowerCase()] -= 1;
+                    console.log(guessDict[chars[i].toLowerCase()]);
                 }
             } else { // if letter isn't in answer
+                console.log("Letter not in")
                 divElements[i + (rowNum * 5)].classList.add("tile-gray"); // set tile gray if letter not in answer
+            }
+        }
+
+        for (let i = 0; i < tileNum; i++) {
+            if (targetWord.toUpperCase().includes(chars[i])) {
+                if (targetWord.toUpperCase().charAt(i) == chars[i]) { // if letter is in answer, check location
+                    continue;
+                } else {
+                    if (guessDict[chars[i].toLowerCase()] > 0) {
+                        console.log("make it yellow!");
+                        divElements[i + (rowNum * 5)].classList.add("tile-yellow");
+                        guessDict[chars[i].toLowerCase()] -= 1;   
+                    } else {
+                        console.log("Exceeding amount in answer");
+                        divElements[i + (rowNum * 5)].classList.add("tile-gray");
+                    }
+                }
             }
         }
     }
