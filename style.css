@@ -102,4 +102,7 @@ html, body {
         height: 52px;
         width: 52px;
     }
+    .keyboard-row {
+        width: 100vw;
+    }
 }
