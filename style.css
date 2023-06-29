@@ -104,8 +104,9 @@ html, body {
         width: 52px;
     }
     #keyboard {
-        width: 100vw;
         gap: .3em;
+        margin-left: 10%;
+        margin-right: 10%;
     }
     .keyboard-row {
         gap: .3em;
@@ -113,5 +114,8 @@ html, body {
     .keyboard-row button {
         letter-spacing: 0px;
         width: 30.8px;
+    }
+    #k-enter, #k-backspace {
+        width: 55px;
     }
 }
