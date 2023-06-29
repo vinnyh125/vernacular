@@ -103,6 +103,7 @@ html, body {
         width: 52px;
     }
     .keyboard-row {
-        width: 100vw;
+        padding: 0 10px; /* Adjust the padding as needed */
+        width: calc(100vw - 20px); /* Subtract the total padding from the viewport width */
     }
 }
