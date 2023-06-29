@@ -104,10 +104,10 @@ html, body {
         width: 52px;
     }
     #keyboard {
+        width: 100vw;
         gap: .3em;
     }
     .keyboard-row {
-        max-width: 100%;
         gap: .3em;
     }
     .keyboard-row button {
