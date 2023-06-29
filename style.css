@@ -26,7 +26,6 @@ html, body {
     height: fit-content;
     margin-top: 2.5%;
     margin-bottom: 2.5%;
-    /* border: 1px solid green; */
     gap: .5em;
 }
 
@@ -105,15 +104,13 @@ html, body {
     }
     #keyboard {
         gap: .3em;
-        margin-left: 10%;
-        margin-right: 10%;
     }
     .keyboard-row {
         gap: .3em;
     }
     .keyboard-row button {
         letter-spacing: 0px;
-        width: 30.8px;
+        width: 30px;
     }
     #k-enter, #k-backspace {
         width: 55px;
