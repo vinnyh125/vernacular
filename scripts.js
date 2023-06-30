@@ -97,6 +97,7 @@ $(document).ready(function() {
 
     function checkWord() {
         var guessDict = {};
+        let include = [];
 
         for (let i = 0; i < targetWord.length; i++) {
             if (!(targetWord.charAt(i) in guessDict)) { // if letter doesn't exist in the dictionary yet, add it with value of 1 
@@ -108,16 +109,36 @@ $(document).ready(function() {
         console.log(guessDict);
 
         for (let i = 0; i < tileNum; i++) {
+            let givenText = chars[i];
+            for (let button of document.querySelectorAll("button")) {
+                if (button.textContent.includes(givenText)) {
+                    if (button.textContent == "DEL" || button.textContent == "ENTER") {
+                        continue;
+                    } else {
+                        include.push(button);
+                    }
+                }
+            }
+            console.log("The Element is: ", include);
+        }
+
+        for (let i = 0; i < tileNum; i++) {
             console.log(chars[i].toLowerCase());
             if (targetWord.toUpperCase().includes(chars[i])) { // checks if user input letter is included in answer
                 if (targetWord.toUpperCase().charAt(i) == chars[i]) { // if letter is in answer, check location
                     divElements[i + (rowNum * 5)].classList.add("tile-green"); // if location correct, tile green
                     guessDict[chars[i].toLowerCase()] -= 1;
+                    console.log(include[i]);
+                    if (include[i].classList.contains("tile-yellow")) {
+                        include[i].classList.remove("tile-yellow");
+                    }
+                    include[i].classList.add("tile-green");
                     console.log(guessDict[chars[i].toLowerCase()]);
                 }
             } else { // if letter isn't in answer
                 console.log("Letter not in")
                 divElements[i + (rowNum * 5)].classList.add("tile-gray"); // set tile gray if letter not in answer
+                include[i].classList.add("tile-gray");
             }
         }
 
@@ -129,7 +150,12 @@ $(document).ready(function() {
                     if (guessDict[chars[i].toLowerCase()] > 0) {
                         console.log("make it yellow!");
                         divElements[i + (rowNum * 5)].classList.add("tile-yellow");
-                        guessDict[chars[i].toLowerCase()] -= 1;   
+                        guessDict[chars[i].toLowerCase()] -= 1;
+                        if (include[i].classList.contains("tile-green")) {
+                            continue;
+                        } else {
+                            include[i].classList.add("tile-yellow");
+                        }
                     } else {
                         console.log("Exceeding amount in answer");
                         divElements[i + (rowNum * 5)].classList.add("tile-gray");
