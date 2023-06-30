@@ -46,15 +46,15 @@ html, body {
 }
 
 .tile-green {
-    background-color: green;
+    background-color: #538d4e;
 }
 
 .tile-gray {
-    background-color: gray;
+    background-color: #3a3a3c;
 }
 
 .tile-yellow {
-    background-color: yellow;
+    background-color: #b59f3b;
 }
 
 #keyboard {
