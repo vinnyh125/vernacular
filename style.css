@@ -103,6 +103,7 @@ html, body {
 @media (max-width: 512px) {
     html, body {
         -webkit-text-size-adjust: none;
+        zoom: .95;
     }
     .text-row div {
         height: 52px;
