@@ -27,8 +27,11 @@ $(document).ready(function() {
 
     var tileNum = 0;
     var rowNum = 0;
+    
+    // Define the event handler function separately
+    const clickHandler = (event) => {
+        const key = event.target; // Get a reference to the clicked button element
 
-    const keyHandler = () => {
         if (tileNum < 5 && rowNum < 6) {
             divElements[tileNum + (rowNum * 5)].textContent = key.innerText;
             chars.push(key.innerText);
@@ -36,31 +39,31 @@ $(document).ready(function() {
         }
     };
 
-    const delHandler = () => {
-        if (tileNum!=0) {
+    const deleteBtnHandler = () => {
+        if (tileNum !== 0) {
             chars.pop();
             tileNum--;
             divElements[tileNum + (rowNum * 5)].textContent = '';
         }
-    }
-
-    const enterHandler = () => {
-        if (tileNum == 5 && rowNum < 6) {
+    };
+    
+    const enterBtnHandler = () => {
+        if (tileNum === 5 && rowNum < 6) {
             checkWord();
             winOrLose();
             tileNum = 0;
-            rowNum ++;
+            rowNum++;
             chars = [];
         }
-    }
-    
+    };
+
     buttons.forEach(key => {
-        key.addEventListener('click', keyHandler);
+        key.addEventListener('click', clickHandler);
     });
 
-    delete_btn.addEventListener('click', delHandler);
+    delete_btn.addEventListener('click', deleteBtnHandler);
 
-    enter_btn.addEventListener('click', enterHandler);
+    enter_btn.addEventListener('click', enterBtnHandler);
 
     const keyboardHandler = (event) => {
         const { key } = event;
@@ -182,9 +185,9 @@ $(document).ready(function() {
     function disableKeys() {
         document.removeEventListener('keydown', keyboardHandler);
         buttons.forEach(key => {
-            key.removeEventListener('click', keyHandler);
+            key.removeEventListener('click', clickHandler);
         });
-        delete_btn.removeEventListener('click', delHandler);
-        enter_btn.removeEventListener('click', enterHandler);
+        delete_btn.removeEventListener('click', deleteBtnHandler);
+        enter_btn.removeEventListener('click', enterBtnHandler);
     }
 });
