@@ -121,5 +121,6 @@ html, body {
     }
     #k-enter, #k-backspace {
         width: 60px;
+        font-size: .7em;
     }
 }
