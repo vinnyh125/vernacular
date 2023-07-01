@@ -169,7 +169,6 @@ $(document).ready(function() {
 
     function winOrLose() {
         let guessString = chars.join('').toLowerCase(); // changes the array of characters into a string that's fully lowercase
-        console.log(guessString);
 
         if (guessString == targetWord) { // if guessed right aka won...
             alert("You won!") // do something when won
