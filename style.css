@@ -103,7 +103,7 @@ html, body {
 @media (max-width: 512px) {
     html, body {
         -webkit-text-size-adjust: none;
-        zoom: .95;
+        zoom: .9;
     }
     .text-row div {
         height: 52px;
@@ -120,6 +120,6 @@ html, body {
         width: 30.8px;
     }
     #k-enter, #k-backspace {
-        width: 55px;
+        width: 60px;
     }
 }
