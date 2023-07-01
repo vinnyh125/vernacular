@@ -106,12 +106,12 @@ html, body {
         zoom: .88;
     }
     .text-row div {
-        height: 60px;
-        width: 60px;
+        height: 70px;
+        width: 70px;
     }
     #keyboard {
         gap: .3em;
-        margin-top: 30%;
+        margin-top: 10%;
     }
     .keyboard-row {
         gap: .3em;
