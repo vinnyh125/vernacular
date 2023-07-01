@@ -81,13 +81,14 @@ html, body {
     text-align: center;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
+    font-size: 1.25em;
     color: inherit;
     background-color: gray;
     font: inherit;
     font-weight: bold;
     height: 58px;
-    width: 43px;
+    max-width: 2.6875em;
+    min-width: 1.90625em;
     border: 1px solid gray;
 }
 
