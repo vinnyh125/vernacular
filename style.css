@@ -101,6 +101,9 @@ html, body {
 }
 
 @media (max-width: 512px) {
+    html, body {
+        -webkit-text-size-adjust: none;
+    }
     .text-row div {
         height: 52px;
         width: 52px;
