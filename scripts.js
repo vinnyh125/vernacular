@@ -27,25 +27,24 @@ $(document).ready(function() {
 
     var tileNum = 0;
     var rowNum = 0;
-    buttons.forEach(key => {
-        key.addEventListener('click', () => {
-            if (tileNum < 5 && rowNum < 6) {
-                divElements[tileNum + (rowNum * 5)].textContent = key.innerText;
-                chars.push(key.innerText);
-                tileNum++;
-            }
-        });
-    });
 
-    delete_btn.addEventListener('click', () => {
+    const keyHandler = () => {
+        if (tileNum < 5 && rowNum < 6) {
+            divElements[tileNum + (rowNum * 5)].textContent = key.innerText;
+            chars.push(key.innerText);
+            tileNum++;
+        }
+    };
+
+    const delHandler = () => {
         if (tileNum!=0) {
             chars.pop();
             tileNum--;
             divElements[tileNum + (rowNum * 5)].textContent = '';
         }
-    });
+    }
 
-    enter_btn.addEventListener('click', () => { 
+    const enterHandler = () => {
         if (tileNum == 5 && rowNum < 6) {
             checkWord();
             winOrLose();
@@ -53,9 +52,17 @@ $(document).ready(function() {
             rowNum ++;
             chars = [];
         }
+    }
+    
+    buttons.forEach(key => {
+        key.addEventListener('click', keyHandler);
     });
 
-    document.addEventListener('keydown', (event) => {
+    delete_btn.addEventListener('click', delHandler);
+
+    enter_btn.addEventListener('click', enterHandler);
+
+    const keyboardHandler = (event) => {
         const { key } = event;
         const isAlphabeticalKey = /^[a-zA-Z]$/.test(key); // regex: keyboard inputs from a-z & A-Z are supported
 
@@ -67,7 +74,8 @@ $(document).ready(function() {
         } else if (key === 'Enter') {
             processEnter();
         }
-    });
+    }
+    document.addEventListener('keydown', keyboardHandler);
 
     function insertCharacter(character) {
         if (tileNum < 5 && rowNum < 6) {
@@ -165,8 +173,19 @@ $(document).ready(function() {
 
         if (guessString == targetWord) { // if guessed right aka won...
             alert("You won!") // do something when won
+            disableKeys();
         } else if (guessString != targetWord && rowNum == 5) { // if guessed wrong on last possible try
             alert("You lost.") // do something when lost
+            disableKeys();
         }
+    }
+
+    function disableKeys() {
+        document.removeEventListener('keydown', keyboardHandler);
+        buttons.forEach(key => {
+            key.removeEventListener('click', keyHandler);
+        });
+        delete_btn.removeEventListener('click', delHandler);
+        enter_btn.removeEventListener('click', enterHandler);
     }
 });
