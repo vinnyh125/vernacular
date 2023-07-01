@@ -87,8 +87,7 @@ html, body {
     font: inherit;
     font-weight: bold;
     height: 58px;
-    max-width: 2.6875em;
-    min-width: 1.90625em;
+    width: 43px;
     border: 1px solid gray;
 }
 
