@@ -148,10 +148,12 @@ html, body {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
+    font-weight: bold;
 }
 
 #word-answer-definition {
     text-align: center;
+    margin-bottom: 20px;
 }
 
 @media (max-width: 512px) {
