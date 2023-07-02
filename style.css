@@ -147,6 +147,7 @@ html, body {
 #word-answer {
     text-align: center;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 #word-answer-definition {
