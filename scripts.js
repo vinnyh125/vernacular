@@ -7,23 +7,37 @@ $(document).ready(function() {
     let chars = [];
     var targetWord = '';
     var answerDict = {};
+    var targetWordDefinition = '';
 
     const api_url = "https://random-word-api.vercel.app/api?words=1&length=5"; // 5-letter word api
+    const api_dictionary_url = "https://api.dictionaryapi.dev/api/v2/entries/en/"; // dictionary api
 
-    async function getapi(url) {
-        const response = await fetch(url); // Store response of api call
-        var data = await response.json(); // store data in json form (array in this case)
-        targetWord = data[0]; // setting targetWord to be word from api call
-        console.log(targetWord); // print answer in console
+    async function getDictionaryApi(url) {
+        const response = await fetch(url);
+        const data = await response.json();
+        targetWordDefinition = data[0].meanings[0].definitions[0].definition;
+        console.log(targetWordDefinition);
+      }
+      
+      async function getapi(url) {
+        const response = await fetch(url);
+        const data = await response.json();
+        targetWord = data[0];
+        console.log(targetWord);
         for (let i = 0; i < targetWord.length; i++) {
-            if (!(targetWord.charAt(i) in answerDict)) { // if letter doesn't exist in the dictionary yet, add it with value of 1 
-                answerDict[targetWord.charAt(i)] = 1;
-            } else { // if letter does exist, increment the times it appears in the answer by 1
-                answerDict[targetWord.charAt(i)] += 1;
-            }
+          if (!(targetWord.charAt(i) in answerDict)) {
+            answerDict[targetWord.charAt(i)] = 1;
+          } else {
+            answerDict[targetWord.charAt(i)] += 1;
+          }
         }
-    }
-    getapi(api_url); // actually calling the api using the api link
+      
+        const dictionaryApiUrl = api_dictionary_url + targetWord;
+        getDictionaryApi(dictionaryApiUrl);
+      }
+      
+      getapi(api_url);
+      
 
     var tileNum = 0;
     var rowNum = 0;
@@ -189,6 +203,7 @@ $(document).ready(function() {
         enter_btn.removeEventListener('click', enterBtnHandler);
         document.getElementById("dialogBox").style.display = "flex";
         document.getElementById("word-answer").innerText = targetWord.toUpperCase();
+        document.getElementById("word-answer-definition").innerText = targetWordDefinition;
         document.getElementById("page-content").style.opacity = "0.5";
     }
 });
