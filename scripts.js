@@ -17,26 +17,26 @@ $(document).ready(function() {
         const data = await response.json();
         targetWordDefinition = data[0].meanings[0].definitions[0].definition;
         console.log(targetWordDefinition);
-      }
+    }
       
-      async function getapi(url) {
+    async function getapi(url) {
         const response = await fetch(url);
         const data = await response.json();
         targetWord = data[0];
         console.log(targetWord);
         for (let i = 0; i < targetWord.length; i++) {
-          if (!(targetWord.charAt(i) in answerDict)) {
+            if (!(targetWord.charAt(i) in answerDict)) {
             answerDict[targetWord.charAt(i)] = 1;
-          } else {
+            } else {
             answerDict[targetWord.charAt(i)] += 1;
-          }
+            }
         }
       
         const dictionaryApiUrl = api_dictionary_url + targetWord;
         getDictionaryApi(dictionaryApiUrl);
-      }
+    }
       
-      getapi(api_url);
+    getapi(api_url);
       
 
     var tileNum = 0;
