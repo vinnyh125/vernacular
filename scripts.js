@@ -174,20 +174,21 @@ $(document).ready(function() {
         let guessString = chars.join('').toLowerCase(); // changes the array of characters into a string that's fully lowercase
 
         if (guessString == targetWord) { // if guessed right aka won...
-            alert("You won!") // do something when won
-            disableKeys();
+            endOfGame();
         } else if (guessString != targetWord && rowNum == 5) { // if guessed wrong on last possible try
-            alert("You lost.") // do something when lost
-            disableKeys();
+            endOfGame();
         }
     }
 
-    function disableKeys() {
+    function endOfGame() {
         document.removeEventListener('keydown', keyboardHandler);
         buttons.forEach(key => {
             key.removeEventListener('click', clickHandler);
         });
         delete_btn.removeEventListener('click', deleteBtnHandler);
         enter_btn.removeEventListener('click', enterBtnHandler);
+        document.getElementById("dialogBox").style.display = "flex";
+        document.getElementById("word-answer").innerText = targetWord.toUpperCase();
+        document.getElementById("page-content").style.opacity = "0.5";
     }
 });
