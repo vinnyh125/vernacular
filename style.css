@@ -6,7 +6,7 @@ html, body {
     background-color: #000;
     letter-spacing: 1.5px;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: hidden;
     touch-action: manipulation;
 
 }
@@ -198,5 +198,11 @@ html, body {
     #k-enter, #k-backspace {
         width: 60px;
         font-size: .65em;
+    }
+}
+
+@media (max-height: 928px) {
+    body,html {
+        overflow-y: auto;
     }
 }
