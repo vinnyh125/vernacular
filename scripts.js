@@ -13,10 +13,14 @@ $(document).ready(function() {
     const api_dictionary_url = "https://api.dictionaryapi.dev/api/v2/entries/en/"; // dictionary api
 
     async function getDictionaryApi(url) {
-        const response = await fetch(url);
-        const data = await response.json();
-        targetWordDefinition = data[0].meanings[0].definitions[0].definition;
-        console.log(targetWordDefinition);
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            targetWordDefinition = data[0].meanings[0].definitions[0].definition;
+            console.log(targetWordDefinition);
+        } catch (error) {
+            targetWordDefinition = "Sorry, the definition doesn't appear in the api.";
+        }
     }
       
     async function getapi(url) {
