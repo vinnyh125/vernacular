@@ -135,6 +135,16 @@ html, body {
     overflow-y: auto;
     box-sizing: border-box;
     max-width: 520px;
+    animation: slidein 0.8s ease-in-out;
+}
+
+@keyframes slidein {
+    0% {
+      top: -1900px;
+    }
+    100% {
+      top: 0px;
+    }
 }
 
 #info-container {
@@ -157,6 +167,13 @@ html, body {
     margin-left: 8px;
     margin-right: 8px;
 }
+
+.spin-animation {
+    transform: rotateX(180deg);
+    transition: transform 0.5s;
+    transform: rotate(360deg);
+}
+
 
 @media (max-width: 512px) {
     html, body {
