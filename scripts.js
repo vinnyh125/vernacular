@@ -126,6 +126,12 @@ $(document).ready(function() {
         var guessDict = {};
         let include = [];
 
+        for (let i = 0; i < tileNum; i++) {
+            var delay = i + 1;
+            divElements[i + (rowNum * 5)].classList.add("spin-animation");
+            divElements[i + (rowNum * 5)].style.transitionDelay = (delay * .1).toString() + "s";
+        }
+
         for (let i = 0; i < targetWord.length; i++) {
             if (!(targetWord.charAt(i) in guessDict)) { // if letter doesn't exist in the dictionary yet, add it with value of 1 
                 guessDict[targetWord.charAt(i)] = 1;
@@ -205,5 +211,6 @@ $(document).ready(function() {
         document.getElementById("word-answer").innerText = targetWord.toUpperCase();
         document.getElementById("word-answer-definition").innerText = targetWordDefinition;
         document.getElementById("page-content").style.opacity = "0.5";
+        document.getElementById("page-content").style.transition = "opacity 1s";
     }
 });
