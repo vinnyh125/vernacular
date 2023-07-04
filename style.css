@@ -200,13 +200,13 @@ html, body {
     #textboard {
         gap: 0.5em;
     }
-    
     .text-row {
         gap: 0.5em;
     }
     .text-row div {
         height: 70px;
         width: 70px;
+        border: 2px;
     }
     #keyboard {
         gap: .3em;
