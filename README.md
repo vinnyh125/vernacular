@@ -13,4 +13,4 @@ Because Wordle/Vernacular is unlike other standard sites (which are often static
 # Outcome
 It took a lot of work, but I am satistfied with the final results of this project. It was really fun working with a lot more javascript!
 
-![Alt Text](https://i.gyazo.com/f6be84b4ad36dc7d6617920bda1efe25.gif)
+![Alt Text](https://i.gyazo.com/0c6f141f59a92c151e533fa2cbc9b8c5.gif)
