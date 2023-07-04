@@ -1,4 +1,4 @@
-# 🧩 vernacular 🧩
+# 🧩 Vernacular 🧩
 Vernacular is a fun, web-based game that takes inspiration from wordle. In this early version, vernacular only supports five character words, but there are plans on changing this to support longer words in the future. The main difference between vernacular and wordle is that vernacular looks to support definitions of the words it makes the user guess. In doing this, I hope vernacular encourages more people to learn new words and expand their vocabulary while playing something fun! 
 
 # Goals
@@ -10,3 +10,7 @@ I wanted to play around with dark theme/dark mode logic. In my previous projects
 # Challenges
 Because Wordle/Vernacular is unlike other standard sites (which are often static and just aim to display text), there were quite a few challenges that I ran into working on this project. Firstly, the design of the website forced me to learn flexbox which has been instrumental in simplifying this entire design process. The on-screen keyboard was a challenge as well since I had to allow it to input letters into the grids/tiles to form the words. This required eventListeners and a whole bunch of javascript logic that I had never worked with before. Finally, the game logic was also difficult as I had to determine correct behavior by just testing a bunch of stuff out on Wordle. Overall, I thought it was challenging, but I had a way better time tackling this project when I broke the project down into much more digestible and doable pieces. Vernacular also forced me to use javascript and interacting with the DOM more in the web-applications I've been building which is important practice for the future.
 
+# Outcome
+It took a lot of work, but I am satistfied with the final results of this project. It was really fun working with a lot more javascript!
+
+![Alt Text](https://i.gyazo.com/f6be84b4ad36dc7d6617920bda1efe25.gif)
