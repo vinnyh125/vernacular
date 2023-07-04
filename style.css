@@ -197,6 +197,13 @@ html, body {
         -webkit-text-size-adjust: none;
         zoom: .88;
     }
+    #textboard {
+        gap: 0.5em;
+    }
+    
+    .text-row {
+        gap: 0.5em;
+    }
     .text-row div {
         height: 70px;
         width: 70px;
