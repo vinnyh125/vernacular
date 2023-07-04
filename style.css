@@ -31,24 +31,42 @@ html, body {
     height: fit-content;
     margin-top: 2.5%;
     margin-bottom: 2.5%;
-    gap: .5em;
+    gap: 5px;
 }
 
 .text-row {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: .5em;
+    gap: 5px;
 }
 
 .text-row div {
     height: 62px;
     width: 62px;
-    border: 1px solid #3a3a3c;
+    border: 2px solid #3a3a3c;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.25em;
+}
+
+@keyframes stretch-big {
+    0% {
+        transform: scale(100%);
+    }
+    100% {
+        transform: scale(115%);
+    }
+}
+
+@keyframes stretch-small {
+    0% {
+        transform: scale(115%);
+    }
+    100% {
+        transform: scale(100%);
+    }
 }
 
 .tile-green {
@@ -70,7 +88,7 @@ html, body {
     display: flex;
     flex-direction: column;
     height: fit-content;
-    gap: .5em;
+    gap: .4em;
 }
 
 .keyboard-row {
@@ -78,7 +96,7 @@ html, body {
     justify-content: center;
     align-items: center;
     width: 100%;
-    gap: .5em;
+    gap: .4em;
 }
 
 .keyboard-row button {
