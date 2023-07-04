@@ -52,6 +52,7 @@ $(document).ready(function() {
 
         if (tileNum < 5 && rowNum < 6) {
             divElements[tileNum + (rowNum * 5)].textContent = key.innerText;
+            tileFilled()
             chars.push(key.innerText);
             tileNum++;
         }
@@ -61,6 +62,7 @@ $(document).ready(function() {
         if (tileNum !== 0) {
             chars.pop();
             tileNum--;
+            removeFilledTileStyling()
             divElements[tileNum + (rowNum * 5)].textContent = '';
         }
     };
@@ -101,6 +103,7 @@ $(document).ready(function() {
     function insertCharacter(character) {
         if (tileNum < 5 && rowNum < 6) {
             divElements[tileNum + (rowNum * 5)].textContent = character;
+            tileFilled()
             chars.push(character);
             tileNum++;
         }
@@ -110,6 +113,7 @@ $(document).ready(function() {
         if (tileNum !== 0) {
             chars.pop();
             tileNum--;
+            removeFilledTileStyling()
             divElements[tileNum + (rowNum * 5)].textContent = '';
         }
     }
@@ -204,7 +208,7 @@ $(document).ready(function() {
         }
     }
 
-    function endOfGame() {
+    function endOfGame() { // styling and DOM changes when user guesses word or runs out of guesses
         document.removeEventListener('keydown', keyboardHandler);
         buttons.forEach(key => {
             key.removeEventListener('click', clickHandler);
@@ -216,5 +220,16 @@ $(document).ready(function() {
         document.getElementById("word-answer-definition").innerText = targetWordDefinition;
         document.getElementById("page-content").style.opacity = "0.5";
         document.getElementById("page-content").style.transition = "opacity 1s";
+    }
+
+    function tileFilled() { // subtle animation and border coloring changes to indicate an occupied tile
+        divElements[tileNum + (rowNum * 5)].style.animation = "stretch-big 0.1s ease"; // make tile look large
+        divElements[tileNum + (rowNum * 5)].style.animation = "stretch-small 0.1s ease"; // make tile look small (combination of two creates pulsing effect)
+        divElements[tileNum + (rowNum * 5)].style.borderColor = "#565758"; // turn to slightly lighter shade to indicate occupancy
+    }
+
+    function removeFilledTileStyling() { // removes the animation property and changes in border color when user presses delete
+        divElements[tileNum + (rowNum * 5)].style.removeProperty("animation"); // removes animation so it can repeat if needed
+        divElements[tileNum + (rowNum * 5)].style.borderColor = "#3a3a3c"; // turn border-color to original shade
     }
 });
