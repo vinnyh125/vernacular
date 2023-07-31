@@ -1,6 +1,7 @@
 $(document).ready(function() {
     const buttons = document.querySelectorAll(".key");
     const divElements = document.querySelectorAll(".tile");
+    const rowElements = document.querySelectorAll(".text-row");
     const delete_btn = document.querySelector(".delete");
     const enter_btn = document.querySelector(".enter");
 
@@ -8,6 +9,19 @@ $(document).ready(function() {
     var targetWord = '';
     var answerDict = {};
     var targetWordDefinition = '';
+
+    let wordDict = '';
+
+    fetch("./words_dictionary.json")
+    .then(response => {
+        return response.json();
+    })
+    .then(data => {
+        wordDict = data;
+    })
+    .then(() => {
+        console.log(wordDict);
+    });
 
     const api_url = "https://random-word-api.vercel.app/api?words=1&length=5"; // 5-letter word api
     const api_dictionary_url = "https://api.dictionaryapi.dev/api/v2/entries/en/"; // dictionary api
@@ -52,7 +66,7 @@ $(document).ready(function() {
 
         if (tileNum < 5 && rowNum < 6) {
             divElements[tileNum + (rowNum * 5)].textContent = key.innerText;
-            tileFilled()
+            tileFilled();
             chars.push(key.innerText);
             tileNum++;
         }
@@ -62,18 +76,24 @@ $(document).ready(function() {
         if (tileNum !== 0) {
             chars.pop();
             tileNum--;
-            removeFilledTileStyling()
+            removeFilledTileStyling();
             divElements[tileNum + (rowNum * 5)].textContent = '';
         }
     };
     
     const enterBtnHandler = () => {
         if (tileNum === 5 && rowNum < 6) {
-            checkWord();
-            winOrLose();
-            tileNum = 0;
-            rowNum++;
-            chars = [];
+            if (wordDict.hasOwnProperty(chars.join("").toLowerCase())) {
+                checkWord();
+                winOrLose();
+                tileNum = 0;
+                rowNum++;
+                chars = [];
+            } else {
+                invalidInput();
+            }
+        } else if (tileNum < 5 && rowNum < 6) {
+            invalidInput();
         }
     };
 
@@ -103,7 +123,7 @@ $(document).ready(function() {
     function insertCharacter(character) {
         if (tileNum < 5 && rowNum < 6) {
             divElements[tileNum + (rowNum * 5)].textContent = character;
-            tileFilled()
+            tileFilled();
             chars.push(character);
             tileNum++;
         }
@@ -113,24 +133,29 @@ $(document).ready(function() {
         if (tileNum !== 0) {
             chars.pop();
             tileNum--;
-            removeFilledTileStyling()
+            removeFilledTileStyling();
             divElements[tileNum + (rowNum * 5)].textContent = '';
         }
     }
 
     function processEnter() {
         if (tileNum === 5 && rowNum < 6) {
-            checkWord();
-            winOrLose();
-            tileNum = 0;
-            rowNum++;
-            chars = [];
+            if (wordDict.hasOwnProperty(chars.join("").toLowerCase())) {
+                checkWord();
+                winOrLose();
+                tileNum = 0;
+                rowNum++;
+                chars = [];
+            } else {
+                invalidInput();
+            }
         } else if (tileNum < 5 && rowNum < 6) {
-            alert("Not enough letters!")
+            invalidInput();
         }
     }
 
     function checkWord() {
+        console.log("valid word")
         var guessDict = {};
         let include = [];
 
@@ -231,5 +256,12 @@ $(document).ready(function() {
     function removeFilledTileStyling() { // removes the animation property and changes in border color when user presses delete
         divElements[tileNum + (rowNum * 5)].style.removeProperty("animation"); // removes animation so it can repeat if needed
         divElements[tileNum + (rowNum * 5)].style.borderColor = "#3a3a3c"; // turn border-color to original shade
+    }
+
+    function invalidInput() { // subtle animation for when user tries to input a word that doesn't have enough letters or doesn't exist
+        rowElements[rowNum].style.animation = "shake 0.35s ease";
+        setTimeout(() => {
+            rowElements[rowNum].style.animation = "";
+        }, 350)
     }
 });
