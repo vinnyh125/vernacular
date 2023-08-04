@@ -8,6 +8,7 @@ $(document).ready(function() {
     let chars = [];
     var targetWord = '';
     var answerDict = {};
+    var targetWordPOS = '';
     var targetWordDefinition = '';
 
     let wordDict = '';
@@ -27,6 +28,8 @@ $(document).ready(function() {
         try {
             const response = await fetch(url);
             const data = await response.json();
+            console.log(data);
+            targetWordPOS = data[0].meanings[0].partOfSpeech;
             targetWordDefinition = data[0].meanings[0].definitions[0].definition;
             console.log(targetWordDefinition);
         } catch (error) {
@@ -152,7 +155,6 @@ $(document).ready(function() {
     }
 
     function checkWord() {
-        console.log("valid word")
         var guessDict = {};
         let include = [];
 
@@ -239,6 +241,7 @@ $(document).ready(function() {
         enter_btn.removeEventListener('click', enterBtnHandler);
         document.getElementById("dialogBox").style.display = "flex";
         document.getElementById("word-answer").innerText = targetWord.toUpperCase();
+        document.getElementById("word-part-of-speech").innerText = targetWordPOS;
         document.getElementById("word-answer-definition").innerText = targetWordDefinition;
         document.getElementById("page-content").style.opacity = "0.5";
         document.getElementById("page-content").style.transition = "opacity 1s";
