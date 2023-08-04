@@ -176,7 +176,7 @@ $(document).ready(function() {
             let givenText = chars[i];
             for (let button of document.querySelectorAll("button")) {
                 if (button.textContent.includes(givenText)) {
-                    if (button.textContent == "DEL" || button.textContent == "ENTER") {
+                    if (button.textContent == "DEL" || button.textContent == "ENTER" || button.textContent == "Play Again") {
                         continue;
                     } else {
                         include.push(button);
