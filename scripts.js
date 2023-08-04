@@ -18,9 +18,6 @@ $(document).ready(function() {
     })
     .then(data => {
         wordDict = data;
-    })
-    .then(() => {
-        console.log(wordDict);
     });
 
     const api_url = "https://random-word-api.vercel.app/api?words=1&length=5"; // 5-letter word api
