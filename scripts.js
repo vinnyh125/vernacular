@@ -80,7 +80,9 @@ $(document).ready(function() {
             divElements[tileNum + (rowNum * 5)].textContent = '';
         }
     };
-    
+
+var charsFinal;
+
     const enterBtnHandler = () => {
         if (tileNum === 5 && rowNum < 6) {
             if (wordDict.hasOwnProperty(chars.join("").toLowerCase())) {
@@ -88,6 +90,7 @@ $(document).ready(function() {
                 winOrLose();
                 tileNum = 0;
                 rowNum++;
+                charsFinal = chars;
                 chars = [];
             } else {
                 invalidInput();
@@ -145,6 +148,7 @@ $(document).ready(function() {
                 winOrLose();
                 tileNum = 0;
                 rowNum++;
+                charsFinal = chars;
                 chars = [];
             } else {
                 invalidInput();
@@ -245,6 +249,7 @@ $(document).ready(function() {
         document.getElementById("word-answer-definition").innerText = targetWordDefinition;
         document.getElementById("page-content").style.opacity = "0.5";
         document.getElementById("page-content").style.transition = "opacity 1s";
+        document.getElementById("share").addEventListener("click", shareResults);
     }
 
     function tileFilled() { // subtle animation and border coloring changes to indicate an occupied tile
@@ -263,5 +268,41 @@ $(document).ready(function() {
         setTimeout(() => {
             rowElements[rowNum].style.animation = "";
         }, 350)
+    }
+
+    function shareResults() {
+        console.log("Share results has been clicked")
+        let msg = '';
+        let numOfTries = rowNum;
+        let guessString = charsFinal.join('').toLowerCase();
+
+        for (let i = 0; i < divElements.length; i++) {
+            if (i % 5 == 0) {
+                msg = msg + "\n"
+            }
+            if (divElements[i].classList.contains('tile-green')) {
+                msg = msg + "🟩 "
+            }
+            if (divElements[i].classList.contains('tile-yellow')) {
+                msg = msg + "🟨 "
+            }
+            if (divElements[i].classList.contains('tile-gray')) {
+                msg = msg + "⬛ "
+            }
+            if (divElements[i].classList.length == 1) {
+                msg = msg + "⬛ "
+            }
+        }
+
+        msg = msg + "\n" + "Play Vernacular: https://vernaculargame.netlify.app/"
+        
+        console.log("The guessed string: " + guessString)
+        console.log("The target word: " + targetWord)
+
+        if (guessString != targetWord && rowNum == 6) {
+            navigator.clipboard.writeText("Vernacular: Did Not Solve" + msg)
+        } else {
+            navigator.clipboard.writeText("Vernacular: Solved in " + numOfTries + "!" + msg)
+        }
     }
 });
