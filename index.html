@@ -12,6 +12,7 @@
     <title>Vernacular</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="scripts.js"></script>
 </head>
 <body>
     <div id="page-content">
@@ -107,10 +108,12 @@
                 <div id="word-answer"></div>
                 <div id="word-part-of-speech"></div>
                 <div id="word-answer-definition"></div>
-                <button id="play-again" onclick="location.reload()">Play Again</button>
+                <div id="resultButtons">
+                    <button id="play-again" onclick="location.reload()">Play Again</button>
+                    <button id="share">Share</button>
+                </div>
             </div>
         </div>
     </dialog>
-    <script src="scripts.js"></script>
 </body>
 </html>
