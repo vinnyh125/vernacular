@@ -271,7 +271,6 @@ var charsFinal;
     }
 
     function shareResults() {
-        console.log("Share results has been clicked")
         let msg = '';
         let numOfTries = rowNum;
         let guessString = charsFinal.join('').toLowerCase();
@@ -295,9 +294,6 @@ var charsFinal;
         }
 
         msg = msg + "\n" + "Play Vernacular: https://vernaculargame.netlify.app/"
-        
-        console.log("The guessed string: " + guessString)
-        console.log("The target word: " + targetWord)
 
         if (guessString != targetWord && rowNum == 6) {
             navigator.clipboard.writeText("Vernacular: Did Not Solve" + msg)
