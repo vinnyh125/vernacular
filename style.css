@@ -176,7 +176,16 @@ html, body {
     animation: slidein 0.8s ease-in-out;
 }
 
+#resultButtons {
+    width: 100%;
+    display: flex;
+}
+
 #play-again {
+    border-right: 1px #3a3a3c solid !important;
+}
+
+#play-again, #share {
     font: inherit;
     color: white;
     background-color: #121213 !important;
@@ -184,9 +193,10 @@ html, body {
     padding-top: 20px;
     padding-bottom: 20px;
     border-top: 1px #3a3a3c solid !important;
+    width: calc(100%/2)
 }
 
-#play-again:hover {
+#play-again:hover, #share:hover {
     background-color:#1a1a1b !important; 
 }
 
