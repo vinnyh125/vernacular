@@ -180,7 +180,7 @@ var charsFinal;
             let givenText = chars[i];
             for (let button of document.querySelectorAll("button")) {
                 if (button.textContent.includes(givenText)) {
-                    if (button.textContent == "DEL" || button.textContent == "ENTER" || button.textContent == "Play Again") {
+                    if (button.textContent == "DEL" || button.textContent == "ENTER" || button.textContent == "Play Again" || button.textContent == "Share") {
                         continue;
                     } else {
                         include.push(button);
