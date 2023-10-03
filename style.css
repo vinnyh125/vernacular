@@ -21,6 +21,25 @@ html, body {
     border-bottom: 1px #3a3a3c solid;
 }
 
+#share-container {
+    display: none;
+    position: fixed;
+    width: 100%;
+    justify-content: center;
+    z-index: 10;
+    top: 4.5rem;
+}
+
+#share-modal {
+    border-radius: 8px;
+    font-size: .75rem;
+    color: black;
+    background-color: white;
+    border-color: black;
+    padding: 8px;
+    box-shadow: 0 4px 23px 0 rgba(0,0,0,.2);
+}
+
 #title-name {
     text-align: center;
 }
@@ -206,6 +225,21 @@ html, body {
     }
     100% {
       top: 0px;
+    }
+}
+
+@keyframes fade-in-out {
+    0% {
+        opacity: 0%;
+    }
+    10% {
+        opacity: 100%;
+    }
+    75% {
+        opacity: 100%;
+    }
+    100% {
+        opacity: 0%;
     }
 }
 
