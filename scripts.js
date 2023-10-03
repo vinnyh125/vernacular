@@ -300,5 +300,12 @@ var charsFinal;
         } else {
             navigator.clipboard.writeText("Vernacular: Solved in " + numOfTries + "!" + msg)
         }
+
+        document.getElementById("share-container").style.display = "flex";
+        document.getElementById("share-container").style.animation = "fade-in-out 1.5s";
+        setTimeout(() => {
+            document.getElementById("share-container").style.display = "none";
+            document.getElementById("share-container").style.removeProperty("animation");
+        },1500)
     }
 });
